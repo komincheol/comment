@@ -1,0 +1,11 @@
+ <% if flash[:notice] %>
+  <div class="alert alert-primary" role="alert">
+  <%= flash[:notice] %>
+  <!--elsif flash[:alert]-->
+<!--alert(붉은색 경고창을 띄워준다)-->
+</div>
+<% elsif flash[:alert] %>
+ <div class="alert alert-danger" role="alert">
+<%= flash[:alert] %>
+</div>
+<%end%>

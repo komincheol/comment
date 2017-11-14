@@ -9,7 +9,8 @@ class PostController < ApplicationController
   def create
     Post.create(
       title: params[:title],
-      content: params[:content]
+      content: params[:content],
+      user_id: session[:user_id]
       )
     redirect_to '/'
   end
@@ -27,4 +28,34 @@ class PostController < ApplicationController
       )
       redirect_to :back
   end
+  
+  def modify
+    @id = params[:id]
+    @post = Post.find(@id)
+  end
+  
+    def destroy
+    @id = params[:id]
+    @post = Post.find(@id)
+    
+    @post.destroy
+    
+    redirect_to "/"
+    end
+  
+  
+    def update
+    # 1번 글에 대해서 나는 수정을 할거야
+    # 1번 글을 찾는다.
+    @id = params[:id]
+    @post = Post.find(@id)
+    # 해당 글을 업데이트한다.
+    @post.update(
+      title: params[:title],
+      content: params[:content]
+    )
+    
+    redirect_to "/post/show/#{@id}"
+    end
+  
 end

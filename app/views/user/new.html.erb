@@ -1,0 +1,22 @@
+<h1>회원가입</h1>
+<!--<form action="/user/create">-->
+<!--    이메일 : <input type="text" name="email"><br>-->
+<!--    이름 : <input type="text" name="name"><br>-->
+<!--    비밀번호 : <input type="text" name="password"><br>-->
+<!--    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token()%>">-->
+<!--    <input type="submit">-->
+<!--</form>-->
+
+<%= form_tag("/user/create" , method: "post" ) do %>
+ <%= label_tag(:email , "이메일 :")%>
+ <%= text_field_tag(:email) %>
+ <br>
+ <%= label_tag(:name , "이름 :")%>
+ <%= text_field_tag(:name) %>
+ <br>
+ <%=label_tag(:password, "비밀번호 : ")%>
+ <%= text_field_tag(:password) %>
+ <br>
+ <%= submit_tag("회원가입")%>
+ <br>
+<% end %>
